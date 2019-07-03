@@ -2,6 +2,7 @@ import java.io.IOException;
 
 import javax.servlet.Servlet;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -9,7 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Servlet implementation class MainServlet
  */
-
+@WebServlet("/efetuarLogin")
 public class MainServlet extends HttpServlet implements Servlet {
 	private static final long serialVersionUID = 1L;
        
@@ -22,8 +23,9 @@ public class MainServlet extends HttpServlet implements Servlet {
 	 */
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		metodosBanco a = new metodosBanco();
+		a.findMuseuById(1);
 		// TODO Auto-generated method stub
-		
 		String nomeSolicitacao = request.getParameter("nomeSolicitacao");
 		String dataSolicitacao = request.getParameter("dataSolicitacao");
 		String cidadeSolicitacao = request.getParameter("cidadeSolicitacao");
@@ -32,6 +34,9 @@ public class MainServlet extends HttpServlet implements Servlet {
 		String cpfGestor = request.getParameter("cpfGestor");
 		String senhaGestor = request.getParameter("senhaGestor");
 		
+		
+		Boolean b = a.storeNewSoliticacaoMuseu(nomeSolicitacao, dataSolicitacao, cidadeSolicitacao, estadoSolicitacao, nomeGestor, cpfGestor, senhaGestor);
+		System.out.println(b);
 		request.getSession().setAttribute("nomeSolicitacao", nomeSolicitacao);
 		request.getSession().setAttribute("dataSolicitacao", dataSolicitacao);
 		request.getSession().setAttribute("cidadeSolicitacao", cidadeSolicitacao);
