@@ -15,6 +15,8 @@ import dominio.solicitacao_museu.CriarSolicitacaoMuseuMT;
  * Servlet implementation class MainServlet
  */
 
+
+@WebServlet("/ABC")
 public class SolicitarCriacaoMuseuServlet extends HttpServlet implements Servlet {
 	private static final long serialVersionUID = 1L;
 
