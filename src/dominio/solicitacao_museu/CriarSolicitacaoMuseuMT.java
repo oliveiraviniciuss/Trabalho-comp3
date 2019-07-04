@@ -6,12 +6,13 @@ import java.sql.SQLException;
 import dominio.ModuloTabela;
 import locator.ServiceLocator;
 import persistencia.SolicitacaoMuseuTabelaGateway;
+import persistencia.db.DBSolicitacaoMuseuTabelaGateway;
 import persistencia.mt.SolicitacaoMuseuMT;
 
 
 public class CriarSolicitacaoMuseuMT{
 
-	private SolicitacaoMuseuTabelaGateway tabelaGateway = ServiceLocator.getInstance().getSolicitacaoMuseuTableGateway();
+	private SolicitacaoMuseuTabelaGateway tabelaGateway;
 	private SolicitacaoMuseuMT insercao;
 	
 	public CriarSolicitacaoMuseuMT( 
@@ -22,7 +23,7 @@ public class CriarSolicitacaoMuseuMT{
             String cpfGestor,
             String nomeGestor,
             String senhaGestor
-           )  {
+           ) throws SQLException, InstantiationException, IllegalAccessException, ClassNotFoundException  {
 		
 		this.insercao = new SolicitacaoMuseuMT(
 				 nome,
@@ -32,20 +33,19 @@ public class CriarSolicitacaoMuseuMT{
 	             cpfGestor,
 	             nomeGestor,
 	             senhaGestor);
+		
+		this.tabelaGateway = new DBSolicitacaoMuseuTabelaGateway();
 	}
 	
 	public void inserir() {
-		System.out.println("_________________________________________________________");
+		
 		try {
 			tabelaGateway.insert(this.insercao);
 			
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
+		} catch (SQLException e) {		
 			e.printStackTrace();
 		}
-		
-		//System.out.println("deu bom lek");
-		
+	
 	}
 
 	

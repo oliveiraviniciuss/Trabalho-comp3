@@ -21,7 +21,6 @@ public class ServiceLocator {
         return museuTableGateway;
     }
     
-
     public void provide(SolicitacaoMuseuTabelaGateway solicitacaoMuseuTableGateway) {
         this.solicitacaoMuseuTabelaGateway = solicitacaoMuseuTableGateway;
     }

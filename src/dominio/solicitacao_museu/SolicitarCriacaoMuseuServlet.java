@@ -1,5 +1,6 @@
 package dominio.solicitacao_museu;
 import java.io.IOException;
+import java.sql.SQLException;
 
 import javax.servlet.Servlet;
 import javax.servlet.ServletException;
@@ -20,7 +21,7 @@ public class SolicitarCriacaoMuseuServlet extends HttpServlet implements Servlet
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		System.out.println("))))))))))))))))))))))))))))))))))))))))))))");
+		
 		String nomeSolicitacao = request.getParameter("nomeSolicitacao");
 		String dataSolicitacao = request.getParameter("dataSolicitacao");
 		String cidadeSolicitacao = request.getParameter("cidadeSolicitacao");
@@ -46,23 +47,36 @@ public class SolicitarCriacaoMuseuServlet extends HttpServlet implements Servlet
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
-		System.out.println("------------------------------------------------------------");
 		CriarSolicitacaoMuseuMT solicitacao;
 		
-		solicitacao = new CriarSolicitacaoMuseuMT(
-				request.getParameter("nomeSolicitacao"), 
-				request.getParameter("dataSolicitacao"),
-				request.getParameter("cidadeSolicitacao"),
-				request.getParameter("estadoSolicitacao"),
-				request.getParameter("nomeGestor"),
-				request.getParameter("cpfGestor"),
-				request.getParameter("senhaGestor"));
+		try {
+			solicitacao = new CriarSolicitacaoMuseuMT(
+					request.getParameter("nomeSolicitacao"), 
+					request.getParameter("dataSolicitacao"),
+					request.getParameter("cidadeSolicitacao"),
+					request.getParameter("estadoSolicitacao"),
+					request.getParameter("nomeGestor"),
+					request.getParameter("cpfGestor"),
+					request.getParameter("senhaGestor"));
+			
+			solicitacao.inserir();
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (InstantiationException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IllegalAccessException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	
-		solicitacao.inserir();
-		
+
 		doGet(request, response);
-		
-		
 		
 	}
 
