@@ -19,7 +19,7 @@ public class SolicitarCriacaoMuseuServlet extends HttpServlet implements Servlet
 	
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+
 		System.out.println("))))))))))))))))))))))))))))))))))))))))))))");
 		String nomeSolicitacao = request.getParameter("nomeSolicitacao");
 		String dataSolicitacao = request.getParameter("dataSolicitacao");
@@ -28,6 +28,7 @@ public class SolicitarCriacaoMuseuServlet extends HttpServlet implements Servlet
 		String nomeGestor = request.getParameter("nomeGestor");
 		String cpfGestor = request.getParameter("cpfGestor");
 		String senhaGestor = request.getParameter("senhaGestor");
+		
 		
 		request.getSession().setAttribute("nomeSolicitacao", nomeSolicitacao);
 		request.getSession().setAttribute("dataSolicitacao", dataSolicitacao);

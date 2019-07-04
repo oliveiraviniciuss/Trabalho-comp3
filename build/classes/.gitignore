@@ -1,4 +1,8 @@
 /dominio/
 /locator/
 /persistencia/
+<<<<<<< HEAD
 /testebd/
+=======
+/testedb.sql
+>>>>>>> 7f27dbbe47583e9715cc5d8539e8392eb2fad27e
