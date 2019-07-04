@@ -25,7 +25,7 @@
 		</tbody>  
 	</table>  
 	</br>
-	<a href = "http://localhost:8081/SistemaMuseuComp3/jsp/solicitacaoCadastrada.jsp"> 
+	<a href = "http://localhost:8081/SistemaMuseuComp3/solicitacaoCadastrada.jsp"> 
 	<input type="submit" name="submit"> 
 	</a>
 	</br>

@@ -1,22 +1,26 @@
 package dominio.solicitacao_museu;
 import java.io.IOException;
-import java.sql.SQLException;
 
 import javax.servlet.Servlet;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import dominio.ResultSetBase;
 import dominio.solicitacao_museu.CriarSolicitacaoMuseuMT;
+
+@WebServlet("/solicitar-criacao")
 
 public class SolicitarCriacaoMuseuServlet extends HttpServlet implements Servlet {
 	private static final long serialVersionUID = 1L;
 
+	
+	
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	
+		
+		System.out.println("))))))))))))))))))))))))))))))))))))))))))))");
 		String nomeSolicitacao = request.getParameter("nomeSolicitacao");
 		String dataSolicitacao = request.getParameter("dataSolicitacao");
 		String cidadeSolicitacao = request.getParameter("cidadeSolicitacao");
@@ -32,28 +36,30 @@ public class SolicitarCriacaoMuseuServlet extends HttpServlet implements Servlet
 		request.getSession().setAttribute("nomeGestor", nomeGestor);
 		request.getSession().setAttribute("cpfGestor", cpfGestor);
 		request.getSession().setAttribute("senhaGestor", senhaGestor);
-		response.sendRedirect("/");
-	
+		response.sendRedirect("http://localhost:8081/SistemaMuseuComp3/");
+		
+//		request.getSession().invalidate();
+//		request.getRequestDispatcher("printout.jsp").forward(request, response);
 	}
 
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		doGet(request, response);
+	
 		System.out.println("------------------------------------------------------------");
-//		CriarSolicitacaoMuseuMT solicitacao;
-//		
-//		solicitacao = new CriarSolicitacaoMuseuMT(
-//				request.getParameter("nomeSolicitacao"), 
-//				request.getParameter("dataSolicitacao"),
-//				request.getParameter("cidadeSolicitacao"),
-//				request.getParameter("estadoSolicitacao"),
-//				request.getParameter("nomeGestor"),
-//				request.getParameter("cpfGestor"),
-//				request.getParameter("senhaGestor"));
-//	
-//		solicitacao.inserir();
+		CriarSolicitacaoMuseuMT solicitacao;
 		
+		solicitacao = new CriarSolicitacaoMuseuMT(
+				request.getParameter("nomeSolicitacao"), 
+				request.getParameter("dataSolicitacao"),
+				request.getParameter("cidadeSolicitacao"),
+				request.getParameter("estadoSolicitacao"),
+				request.getParameter("nomeGestor"),
+				request.getParameter("cpfGestor"),
+				request.getParameter("senhaGestor"));
+	
+		solicitacao.inserir();
 		
+		doGet(request, response);
 		
 		
 		
