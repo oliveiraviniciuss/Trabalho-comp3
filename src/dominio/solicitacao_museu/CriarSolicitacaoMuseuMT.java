@@ -36,15 +36,15 @@ public class CriarSolicitacaoMuseuMT{
 	
 	public void inserir() {
 		System.out.println("_________________________________________________________");
-//		try {
-//			//tabelaGateway.insert(this.insercao);
-//			
-//		} catch (SQLException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
+		try {
+			tabelaGateway.insert(this.insercao);
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
-		System.out.println("deu bom lek");
+		//System.out.println("deu bom lek");
 		
 	}
 

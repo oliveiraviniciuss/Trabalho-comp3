@@ -39,6 +39,8 @@ public class DBSolicitacaoMuseuTabelaGateway implements SolicitacaoMuseuTabelaGa
 
 	@Override
 	public void insert( SolicitacaoMuseuMT mt) throws SQLException {
+		
+		System.out.println("na inserção ahuhauhauahuah");
 		insertStatement.clearParameters();
 
         insertStatement.setString(1, mt.getNome());
